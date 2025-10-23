@@ -19,7 +19,7 @@ public class JwtService : IJwtService
 
     public string GenerateToken(User user)
     {
-        var jwtSettings = _configuration.GetSection("JwtSettings");
+        var jwtSettings = _configuration.GetSection("Jwt");
         var secretKey = jwtSettings["SecretKey"] ?? throw new InvalidOperationException("JWT Secret Key is not configured");
         var issuer = jwtSettings["Issuer"];
         var audience = jwtSettings["Audience"];

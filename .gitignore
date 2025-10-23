@@ -98,3 +98,17 @@ appsettings.*.json
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+# Build outputs
+**/bin/
+**/obj/
+**/publish/
+*.zip
+
+# Node modules
+**/node_modules/
+
+# Test files
+test-*.ps1
+
+# Local settings
+**/.claude/settings.local.json
