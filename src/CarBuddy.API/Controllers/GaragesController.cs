@@ -32,6 +32,51 @@ public class GaragesController : ControllerBase
     }
 
     /// <summary>
+    /// Search nearby garages within a radius
+    /// </summary>
+    [HttpPost("search")]
+    [ProducesResponseType(typeof(IEnumerable<GarageWithDistanceDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<GarageWithDistanceDto>>> SearchNearby(
+        [FromBody] GarageSearchDto searchDto,
+        CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("Searching garages near ({Lat}, {Lon}) within {Radius}km",
+            searchDto.Latitude, searchDto.Longitude, searchDto.RadiusKm);
+
+        var garages = await _garageService.SearchNearbyGaragesAsync(searchDto, cancellationToken);
+        return Ok(garages);
+    }
+
+    /// <summary>
+    /// Get top-rated garages
+    /// </summary>
+    [HttpGet("top-rated")]
+    [ProducesResponseType(typeof(IEnumerable<GarageDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<GarageDto>>> GetTopRated(
+        [FromQuery] int count = 10,
+        CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation("Fetching top {Count} rated garages", count);
+        var garages = await _garageService.GetTopRatedGaragesAsync(count, cancellationToken);
+        return Ok(garages);
+    }
+
+    /// <summary>
+    /// Get detailed statistics for a garage
+    /// </summary>
+    [HttpGet("{id:guid}/statistics")]
+    [ProducesResponseType(typeof(Dictionary<string, object>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<Dictionary<string, object>>> GetStatistics(
+        Guid id,
+        CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("Fetching statistics for garage {GarageId}", id);
+        var stats = await _garageService.GetGarageStatisticsAsync(id, cancellationToken);
+        return Ok(stats);
+    }
+
+    /// <summary>
     /// Get garage by ID
     /// </summary>
     [HttpGet("{id:guid}")]

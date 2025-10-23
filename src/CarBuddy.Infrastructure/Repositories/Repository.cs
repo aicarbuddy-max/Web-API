@@ -48,4 +48,10 @@ public class Repository<T> : IRepository<T> where T : class
         _dbSet.Remove(entity);
         return Task.CompletedTask;
     }
+
+    // ✅ NEW: Returns IQueryable for database-side LINQ execution
+    public IQueryable<T> Query()
+    {
+        return _dbSet.AsQueryable();
+    }
 }
