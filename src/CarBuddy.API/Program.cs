@@ -31,6 +31,7 @@ builder.Services.AddScoped<IGarageService, GarageService>();
 builder.Services.AddScoped<IServiceService, ServiceService>();
 builder.Services.AddScoped<IAutoPartsShopService, AutoPartsShopService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<ICommunityPostService, CommunityPostService>();
 
 // Configure JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("Jwt");

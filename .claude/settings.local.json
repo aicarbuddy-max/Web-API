@@ -14,7 +14,11 @@
       "Bash(dotnet publish:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(gh run list:*)"
+      "Bash(gh run list:*)",
+      "Bash(dotnet run)",
+      "Bash(curl:*)",
+      "Bash(python:*)",
+      "Bash(TOKEN=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMGNiZjFkYy0yOGI0LTQwM2YtYjQxNy1jZDZlNTZkNmVjYzkiLCJlbWFpbCI6ImNvbW11bml0eUB0ZXN0LmNvbSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJjb21tdW5pdHl1c2VyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImp0aSI6ImUwOTBjOGZmLTAyNTctNGJkYS04OTlmLTBlZmE0ZmY0NzVkOCIsImV4cCI6MTc2MTI1OTg5OSwiaXNzIjoiQ2FyQnVkZHlBUEkiLCJhdWQiOiJDYXJCdWRkeVVzZXJzIn0.8VaUl3p1BQ0gJsSTToi8MuITZJyICU2c9C_g0xlHPKA\")"
     ],
     "deny": [],
     "ask": []
