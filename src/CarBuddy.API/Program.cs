@@ -33,7 +33,7 @@ builder.Services.AddScoped<IAutoPartsShopService, AutoPartsShopService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 
 // Configure JWT Authentication
-var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var jwtSettings = builder.Configuration.GetSection("Jwt");
 var secretKey = jwtSettings["SecretKey"] ?? throw new InvalidOperationException("JWT Secret Key is not configured");
 
 builder.Services.AddAuthentication(options =>
@@ -112,15 +112,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
-if (app.Environment.IsDevelopment())
+// Enable Swagger in all environments (including Production for Azure)
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "CarBuddy API v1");
-        options.RoutePrefix = string.Empty; // Set Swagger UI at the app root
-    });
-}
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "CarBuddy API v1");
+    options.RoutePrefix = "swagger"; // Access Swagger at /swagger
+});
 
 app.UseHttpsRedirection();
 
@@ -130,5 +128,19 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Add a simple health check endpoint
+app.MapGet("/health", () => Results.Ok(new {
+    status = "Healthy",
+    timestamp = DateTime.UtcNow,
+    environment = app.Environment.EnvironmentName
+})).AllowAnonymous();
+
+// Add root endpoint for testing
+app.MapGet("/", () => Results.Ok(new {
+    message = "CarBuddy API is running",
+    swagger = "/swagger",
+    health = "/health"
+})).AllowAnonymous();
 
 app.Run();
