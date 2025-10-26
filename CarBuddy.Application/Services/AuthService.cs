@@ -20,12 +20,12 @@ public class AuthService : IAuthService
     {
         // Check if user already exists
         var existingUsers = await _unitOfWork.Users.FindAsync(
-            u => u.Email == request.Email || u.Username == request.Username,
+            u => u.Email == request.Email || u.PhoneNumber == request.PhoneNumber,
             cancellationToken);
 
         if (existingUsers.Any())
         {
-            throw new InvalidOperationException("User with this email or username already exists");
+            throw new InvalidOperationException("User with this email or phone number already exists");
         }
 
         // Hash password
@@ -34,7 +34,8 @@ public class AuthService : IAuthService
         // Create user
         var user = new User
         {
-            Username = request.Username,
+            FullName = request.FullName,
+            PhoneNumber = request.PhoneNumber,
             Email = request.Email,
             PasswordHash = passwordHash,
             Role = UserRole.User
@@ -49,7 +50,7 @@ public class AuthService : IAuthService
         return new AuthResponseDto
         {
             Token = token,
-            Username = user.Username,
+            FullName = user.FullName,
             Email = user.Email,
             Role = user.Role.ToString()
         };
@@ -75,7 +76,7 @@ public class AuthService : IAuthService
         return new AuthResponseDto
         {
             Token = token,
-            Username = user.Username,
+            FullName = user.FullName,
             Email = user.Email,
             Role = user.Role.ToString()
         };

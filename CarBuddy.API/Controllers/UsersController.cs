@@ -25,9 +25,9 @@ public class UsersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<AuthResponseDto>> Register([FromBody] RegisterRequestDto request, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Registering new user: {Username}", request.Username);
+        _logger.LogInformation("Registering new user: {FullName}", request.FullName);
         var response = await _authService.RegisterAsync(request, cancellationToken);
-        return CreatedAtAction(nameof(Register), new { username = request.Username }, response);
+        return CreatedAtAction(nameof(Register), new { fullName = request.FullName }, response);
     }
 
     /// <summary>
