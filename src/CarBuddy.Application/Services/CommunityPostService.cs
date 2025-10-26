@@ -31,7 +31,7 @@ public class CommunityPostService : ICommunityPostService
         {
             Id = p.Id,
             UserId = p.UserId,
-            Username = p.User.Username,
+            Username = p.User.FullName,
             Content = p.Content,
             LikesCount = p.LikesCount,
             CommentsCount = p.CommentsCount,
@@ -57,7 +57,7 @@ public class CommunityPostService : ICommunityPostService
         {
             Id = post.Id,
             UserId = post.UserId,
-            Username = post.User.Username,
+            Username = post.User.FullName,
             Content = post.Content,
             LikesCount = post.LikesCount,
             CommentsCount = post.CommentsCount,
@@ -90,7 +90,7 @@ public class CommunityPostService : ICommunityPostService
         {
             Id = post.Id,
             UserId = post.UserId,
-            Username = user?.Username ?? "Unknown",
+            Username = user?.FullName ?? "Unknown",
             Content = post.Content,
             LikesCount = post.LikesCount,
             CommentsCount = post.CommentsCount,
@@ -181,7 +181,7 @@ public class CommunityPostService : ICommunityPostService
             Id = c.Id,
             PostId = c.PostId,
             UserId = c.UserId,
-            Username = c.User.Username,
+            Username = c.User.FullName,
             Content = c.Content,
             CreatedAt = c.CreatedAt
         });
@@ -217,7 +217,7 @@ public class CommunityPostService : ICommunityPostService
             Id = comment.Id,
             PostId = comment.PostId,
             UserId = comment.UserId,
-            Username = user?.Username ?? "Unknown",
+            Username = user?.FullName ?? "Unknown",
             Content = comment.Content,
             CreatedAt = comment.CreatedAt
         };
