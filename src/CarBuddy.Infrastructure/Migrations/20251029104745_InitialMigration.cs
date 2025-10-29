@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CarBuddy.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialPostgreSQLMigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AutoPartsShops",
+                name: "autopartsshops",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -26,11 +26,11 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AutoPartsShops", x => x.Id);
+                    table.PrimaryKey("PK_autopartsshops", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ContactMessages",
+                name: "contactmessages",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -43,11 +43,11 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ContactMessages", x => x.Id);
+                    table.PrimaryKey("PK_contactmessages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Garages",
+                name: "garages",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -61,11 +61,11 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Garages", x => x.Id);
+                    table.PrimaryKey("PK_garages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "users",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -79,11 +79,11 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Services",
+                name: "services",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -96,17 +96,17 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Services", x => x.Id);
+                    table.PrimaryKey("PK_services", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Services_Garages_GarageId",
+                        name: "FK_services_garages_GarageId",
                         column: x => x.GarageId,
-                        principalTable: "Garages",
+                        principalTable: "garages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CommunityPosts",
+                name: "communityposts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -119,17 +119,17 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CommunityPosts", x => x.Id);
+                    table.PrimaryKey("PK_communityposts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CommunityPosts_Users_UserId",
+                        name: "FK_communityposts_users_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Reviews",
+                name: "reviews",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -143,27 +143,27 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                    table.PrimaryKey("PK_reviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reviews_AutoPartsShops_AutoPartsShopId",
+                        name: "FK_reviews_autopartsshops_AutoPartsShopId",
                         column: x => x.AutoPartsShopId,
-                        principalTable: "AutoPartsShops",
+                        principalTable: "autopartsshops",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Reviews_Garages_GarageId",
+                        name: "FK_reviews_garages_GarageId",
                         column: x => x.GarageId,
-                        principalTable: "Garages",
+                        principalTable: "garages",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Reviews_Users_UserId",
+                        name: "FK_reviews_users_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserAddresses",
+                name: "useraddresses",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -178,17 +178,17 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserAddresses", x => x.Id);
+                    table.PrimaryKey("PK_useraddresses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserAddresses_Users_UserId",
+                        name: "FK_useraddresses_users_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ServiceBookings",
+                name: "servicebookings",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -203,27 +203,27 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ServiceBookings", x => x.Id);
+                    table.PrimaryKey("PK_servicebookings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ServiceBookings_Garages_GarageId",
+                        name: "FK_servicebookings_garages_GarageId",
                         column: x => x.GarageId,
-                        principalTable: "Garages",
+                        principalTable: "garages",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ServiceBookings_Services_ServiceId",
+                        name: "FK_servicebookings_services_ServiceId",
                         column: x => x.ServiceId,
-                        principalTable: "Services",
+                        principalTable: "services",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ServiceBookings_Users_UserId",
+                        name: "FK_servicebookings_users_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PostComments",
+                name: "postcomments",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -235,22 +235,22 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PostComments", x => x.Id);
+                    table.PrimaryKey("PK_postcomments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PostComments_CommunityPosts_PostId",
+                        name: "FK_postcomments_communityposts_PostId",
                         column: x => x.PostId,
-                        principalTable: "CommunityPosts",
+                        principalTable: "communityposts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PostComments_Users_UserId",
+                        name: "FK_postcomments_users_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "users",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "PostLikes",
+                name: "postlikes",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -260,95 +260,95 @@ namespace CarBuddy.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PostLikes", x => x.Id);
+                    table.PrimaryKey("PK_postlikes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PostLikes_CommunityPosts_PostId",
+                        name: "FK_postlikes_communityposts_PostId",
                         column: x => x.PostId,
-                        principalTable: "CommunityPosts",
+                        principalTable: "communityposts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PostLikes_Users_UserId",
+                        name: "FK_postlikes_users_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "users",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CommunityPosts_UserId",
-                table: "CommunityPosts",
+                name: "IX_communityposts_UserId",
+                table: "communityposts",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PostComments_PostId",
-                table: "PostComments",
+                name: "IX_postcomments_PostId",
+                table: "postcomments",
                 column: "PostId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PostComments_UserId",
-                table: "PostComments",
+                name: "IX_postcomments_UserId",
+                table: "postcomments",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PostLikes_PostId_UserId",
-                table: "PostLikes",
+                name: "IX_postlikes_PostId_UserId",
+                table: "postlikes",
                 columns: new[] { "PostId", "UserId" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_PostLikes_UserId",
-                table: "PostLikes",
+                name: "IX_postlikes_UserId",
+                table: "postlikes",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_AutoPartsShopId",
-                table: "Reviews",
+                name: "IX_reviews_AutoPartsShopId",
+                table: "reviews",
                 column: "AutoPartsShopId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_GarageId",
-                table: "Reviews",
+                name: "IX_reviews_GarageId",
+                table: "reviews",
                 column: "GarageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_UserId",
-                table: "Reviews",
+                name: "IX_reviews_UserId",
+                table: "reviews",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServiceBookings_GarageId",
-                table: "ServiceBookings",
+                name: "IX_servicebookings_GarageId",
+                table: "servicebookings",
                 column: "GarageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServiceBookings_ServiceId",
-                table: "ServiceBookings",
+                name: "IX_servicebookings_ServiceId",
+                table: "servicebookings",
                 column: "ServiceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServiceBookings_UserId",
-                table: "ServiceBookings",
+                name: "IX_servicebookings_UserId",
+                table: "servicebookings",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Services_GarageId",
-                table: "Services",
+                name: "IX_services_GarageId",
+                table: "services",
                 column: "GarageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserAddresses_UserId",
-                table: "UserAddresses",
+                name: "IX_useraddresses_UserId",
+                table: "useraddresses",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_Email",
-                table: "Users",
+                name: "IX_users_Email",
+                table: "users",
                 column: "Email",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_PhoneNumber",
-                table: "Users",
+                name: "IX_users_PhoneNumber",
+                table: "users",
                 column: "PhoneNumber",
                 unique: true);
         }
@@ -357,37 +357,37 @@ namespace CarBuddy.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ContactMessages");
+                name: "contactmessages");
 
             migrationBuilder.DropTable(
-                name: "PostComments");
+                name: "postcomments");
 
             migrationBuilder.DropTable(
-                name: "PostLikes");
+                name: "postlikes");
 
             migrationBuilder.DropTable(
-                name: "Reviews");
+                name: "reviews");
 
             migrationBuilder.DropTable(
-                name: "ServiceBookings");
+                name: "servicebookings");
 
             migrationBuilder.DropTable(
-                name: "UserAddresses");
+                name: "useraddresses");
 
             migrationBuilder.DropTable(
-                name: "CommunityPosts");
+                name: "communityposts");
 
             migrationBuilder.DropTable(
-                name: "AutoPartsShops");
+                name: "autopartsshops");
 
             migrationBuilder.DropTable(
-                name: "Services");
+                name: "services");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "users");
 
             migrationBuilder.DropTable(
-                name: "Garages");
+                name: "garages");
         }
     }
 }

@@ -28,6 +28,7 @@ public class ApplicationDbContext : DbContext
         // User configuration
         modelBuilder.Entity<User>(entity =>
         {
+            entity.ToTable("users");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.FullName).IsRequired().HasMaxLength(100);
             entity.Property(e => e.PhoneNumber).IsRequired().HasMaxLength(20);
@@ -40,6 +41,7 @@ public class ApplicationDbContext : DbContext
         // Garage configuration
         modelBuilder.Entity<Garage>(entity =>
         {
+            entity.ToTable("garages");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
             entity.Property(e => e.Address).IsRequired().HasMaxLength(500);
@@ -53,6 +55,7 @@ public class ApplicationDbContext : DbContext
         // Service configuration
         modelBuilder.Entity<Service>(entity =>
         {
+            entity.ToTable("services");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
             entity.Property(e => e.Description).HasMaxLength(1000);
@@ -62,6 +65,7 @@ public class ApplicationDbContext : DbContext
         // AutoPartsShop configuration
         modelBuilder.Entity<AutoPartsShop>(entity =>
         {
+            entity.ToTable("autopartsshops");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
             entity.Property(e => e.Address).IsRequired().HasMaxLength(500);
@@ -71,6 +75,7 @@ public class ApplicationDbContext : DbContext
         // CommunityPost configuration
         modelBuilder.Entity<CommunityPost>(entity =>
         {
+            entity.ToTable("communityposts");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Content).IsRequired().HasMaxLength(2000);
             entity.HasOne(e => e.User)
@@ -82,6 +87,7 @@ public class ApplicationDbContext : DbContext
         // PostLike configuration
         modelBuilder.Entity<PostLike>(entity =>
         {
+            entity.ToTable("postlikes");
             entity.HasKey(e => e.Id);
             entity.HasOne(e => e.Post)
                   .WithMany(p => p.Likes)
@@ -97,6 +103,7 @@ public class ApplicationDbContext : DbContext
         // PostComment configuration
         modelBuilder.Entity<PostComment>(entity =>
         {
+            entity.ToTable("postcomments");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Content).IsRequired().HasMaxLength(1000);
             entity.HasOne(e => e.Post)
@@ -112,6 +119,7 @@ public class ApplicationDbContext : DbContext
         // ContactMessage configuration
         modelBuilder.Entity<ContactMessage>(entity =>
         {
+            entity.ToTable("contactmessages");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
             entity.Property(e => e.Email).IsRequired().HasMaxLength(100);
@@ -121,6 +129,7 @@ public class ApplicationDbContext : DbContext
         // ServiceBooking configuration
         modelBuilder.Entity<ServiceBooking>(entity =>
         {
+            entity.ToTable("servicebookings");
             entity.HasKey(e => e.Id);
             entity.HasOne(e => e.User)
                   .WithMany()
@@ -139,6 +148,7 @@ public class ApplicationDbContext : DbContext
         // Review configuration
         modelBuilder.Entity<Review>(entity =>
         {
+            entity.ToTable("reviews");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Comment).IsRequired().HasMaxLength(1000);
             entity.HasOne(e => e.User)
@@ -158,6 +168,7 @@ public class ApplicationDbContext : DbContext
         // UserAddress configuration
         modelBuilder.Entity<UserAddress>(entity =>
         {
+            entity.ToTable("useraddresses");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Label).IsRequired().HasMaxLength(100);
             entity.Property(e => e.Address).IsRequired().HasMaxLength(500);

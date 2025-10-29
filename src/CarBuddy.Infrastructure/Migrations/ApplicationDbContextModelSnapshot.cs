@@ -56,7 +56,7 @@ namespace CarBuddy.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AutoPartsShops");
+                    b.ToTable("autopartsshops", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.CommunityPost", b =>
@@ -89,7 +89,7 @@ namespace CarBuddy.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CommunityPosts");
+                    b.ToTable("communityposts", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.ContactMessage", b =>
@@ -125,7 +125,7 @@ namespace CarBuddy.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ContactMessages");
+                    b.ToTable("contactmessages", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.Garage", b =>
@@ -162,7 +162,7 @@ namespace CarBuddy.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Garages");
+                    b.ToTable("garages", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.PostComment", b =>
@@ -194,7 +194,7 @@ namespace CarBuddy.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PostComments");
+                    b.ToTable("postcomments", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.PostLike", b =>
@@ -219,7 +219,7 @@ namespace CarBuddy.Infrastructure.Migrations
                     b.HasIndex("PostId", "UserId")
                         .IsUnique();
 
-                    b.ToTable("PostLikes");
+                    b.ToTable("postlikes", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.Review", b =>
@@ -259,7 +259,7 @@ namespace CarBuddy.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("reviews", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.Service", b =>
@@ -295,7 +295,7 @@ namespace CarBuddy.Infrastructure.Migrations
 
                     b.HasIndex("GarageId");
 
-                    b.ToTable("Services");
+                    b.ToTable("services", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.ServiceBooking", b =>
@@ -337,7 +337,7 @@ namespace CarBuddy.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ServiceBookings");
+                    b.ToTable("servicebookings", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.User", b =>
@@ -382,7 +382,7 @@ namespace CarBuddy.Infrastructure.Migrations
                     b.HasIndex("PhoneNumber")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.UserAddress", b =>
@@ -423,7 +423,7 @@ namespace CarBuddy.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserAddresses");
+                    b.ToTable("useraddresses", (string)null);
                 });
 
             modelBuilder.Entity("CarBuddy.Domain.Entities.CommunityPost", b =>
